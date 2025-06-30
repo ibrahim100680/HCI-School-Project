@@ -1,0 +1,301 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(122, 39%, 49%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --accent: hsl(36, 100%, 50%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  --success: hsl(122, 39%, 49%);
+  --success-foreground: hsl(0, 0%, 100%);
+  --info: hsl(207, 90%, 54%);
+  --info-foreground: hsl(211, 100%, 99%);
+  --error: hsl(0, 63%, 31%);
+  --error-foreground: hsl(0, 0%, 100%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(122, 39%, 49%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --accent: hsl(36, 100%, 50%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+  --success: hsl(122, 39%, 49%);
+  --success-foreground: hsl(0, 0%, 100%);
+  --info: hsl(207, 90%, 54%);
+  --info-foreground: hsl(211, 100%, 99%);
+  --error: hsl(0, 63%, 31%);
+  --error-foreground: hsl(0, 0%, 100%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-transition {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  .btn-transition:hover {
+    @apply transform -translate-y-0.5;
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  .card-hover:hover {
+    @apply transform -translate-y-1 shadow-lg;
+  }
+
+  .floating-label {
+    @apply relative;
+  }
+
+  .floating-label input,
+  .floating-label textarea {
+    @apply border-2 border-gray-200 rounded-lg px-3 py-4 text-base transition-colors duration-200 placeholder-transparent;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .floating-label label {
+    @apply absolute left-3 top-4 text-gray-500 text-base transition-all duration-200 pointer-events-none;
+  }
+
+  .floating-label input:focus,
+  .floating-label textarea:focus {
+    @apply outline-none border-primary;
+  }
+
+  .floating-label input:focus + label,
+  .floating-label input:not(:placeholder-shown) + label,
+  .floating-label textarea:focus + label,
+  .floating-label textarea:not(:placeholder-shown) + label {
+    @apply text-xs text-primary;
+    top: 0.25rem;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(207, 90%, 54%) 0%, hsl(207, 90%, 44%) 100%);
+  }
+
+  .stats-bg {
+    background: hsl(220, 13%, 18%);
+  }
+
+  .nav-active {
+    @apply text-primary font-bold relative;
+    color: hsl(207, 90%, 54%) !important;
+  }
+  
+  .nav-active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: hsl(207, 90%, 54%);
+    border-radius: 2px;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(220, 70%, 50%) 0%, hsl(240, 80%, 60%) 50%, hsl(260, 75%, 55%) 100%);
+  }
+
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Animation Classes */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 1s ease-out;
+  }
+
+  .animate-fade-in-right {
+    animation: fadeInRight 1s ease-out 0.2s both;
+  }
+
+  .animate-fade-in-delayed {
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+  }
+
+  .animate-bounce-in {
+    animation: bounceIn 1s ease-out 0.6s both;
+  }
+
+  .animate-fade-in-stagger {
+    animation: fadeInUp 0.8s ease-out both;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-success {
+    color: hsl(var(--success));
+  }
+
+  .bg-success {
+    background-color: hsl(var(--success));
+  }
+
+  .text-success-foreground {
+    color: hsl(var(--success-foreground));
+  }
+
+  .border-success {
+    border-color: hsl(var(--success));
+  }
+
+  .text-error {
+    color: hsl(var(--error));
+  }
+
+  .bg-error {
+    background-color: hsl(var(--error));
+  }
+
+  .text-error-foreground {
+    color: hsl(var(--error-foreground));
+  }
+
+  .border-error {
+    border-color: hsl(var(--error));
+  }
+
+  .text-info {
+    color: hsl(var(--info));
+  }
+
+  .bg-info {
+    background-color: hsl(var(--info));
+  }
+
+  .text-info-foreground {
+    color: hsl(var(--info-foreground));
+  }
+
+  .border-info {
+    border-color: hsl(var(--info));
+  }
+}
